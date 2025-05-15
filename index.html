@@ -1,0 +1,136 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>lo.iq</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f8f8;
+            color: #333;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            text-align: center;
+        }
+
+        /* Header styles */
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .stars {
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin: 10px 0;
+            letter-spacing: 4px;
+        }
+
+        /* Links styles */
+        .links {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .link {
+            display: block;
+            text-decoration: none;
+            color: #333;
+            margin: 5px 0;
+            font-size: 1rem;
+            position: relative;
+            padding-left: 20px;
+            transition: color 0.3s ease;
+            text-align: left;
+        }
+
+        .link:before {
+            content: '>';
+            position: absolute;
+            left: 0;
+        }
+
+        .link:hover {
+            color: #777;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="stars">* * * * * * * *</div>
+            <h1 class="title">lo.iq</h1>
+            <div class="stars">* * * * * * * *</div>
+        </div>
+        
+        <div class="links">
+            <a href="/no-moats" class="link">there are no moats</a>
+            <a href="/daily-affirmation" class="link">daily affirmation</a>
+        </div>
+    </div>
+
+    <script>
+        // Optional: Add JavaScript for daily affirmation rotation
+        const affirmations = [
+            "I embody the rot in the world",
+		"I am hurtling towards total destruction",
+			    "I am a stone bled dry",
+			    "I will experience things beyond the limits of my comprehension",
+			    "There are forces greater than me that mean me harm",
+			    "What is sacred shall become desecrated",
+			    "I give myself to false idols",
+			    "I must stare longer into the abyss",
+			    "I will usurp death",
+			    "God is not dead, God is vengeful"
+        ];
+
+        // Function to update the daily affirmation
+        function updateAffirmation() {
+            const affirmationLink = document.querySelector('a[href="/daily-affirmation"]');
+            
+            // For demonstration purposes - you might want a more permanent solution
+            affirmationLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                const randomIndex = Math.floor(Math.random() * affirmations.length);
+                alert(affirmations[randomIndex]);
+            });
+        }
+
+        // Initialize once DOM is loaded
+        document.addEventListener('DOMContentLoaded', updateAffirmation);
+    </script>
+</body>
+</html>

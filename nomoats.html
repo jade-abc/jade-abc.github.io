@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>There Are No Moats - lo.iq</title>
+    <style>
+        /* Reset and base styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Header styles */
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+
+        .stars {
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin: 10px 0;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .home-link {
+            text-align: center;
+            margin: 30px 0 60px;
+        }
+
+        .home-link a {
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .home-link a:before {
+            content: '>';
+            position: absolute;
+            left: 0;
+        }
+
+        .home-link a:hover {
+            color: #777;
+        }
+
+        /* Essay styles */
+        .essay-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .essay p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .essay-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="stars">* * * * * * * *</div>
+            <h1 class="title">lo.iq</h1>
+            <div class="stars">* * * * * * * *</div>
+        </div>
+        
+        <div class="essay">
+            <h2 class="essay-title">THERE ARE NO MOATS, ROLL YOUR OWN EVERYTHING (how to become a programmer)</h2>
+<p>I have seen in my time as a programmer the curious notion that other companies or practitioners have computers that are capable of doing anything beyond what their computer can do. I have seen the way that people balked when I expressed that I was going to do something ‘from scratch’. </p>
+<p>Recently,  I was working on a small game during my lunch break and my colleague asked me what it was and I explained that it wasn’t much now but I’m just implementing raycasts and then it will be something I could iterate upon. They exclaimed ‘you’re implementing raycasts from scratch???’ I explained it was a fairly easy thing to implement if you’re aware of the geometry. They mocked my nonchalance, putting on a voice and giving all manner of increasingly ridiculous things that one may try to implement from scratch as myself and my other colleagues laughed along.</p>
+<p>It turns out this colleague thought I meant raytracing, which, I humbly explained “whilst I have implemented that from scratch it was more far more involved and I did it in C# and it was super slow because blah blah blah”. They seemed suitably impressed but, when I tried to extol the virtues of the excellent book I had used to write a ray tracer (The Ray Tracer Challenge) all interest faded whilst I, trying still to give sermon, fervently raved about the way the book guides you by having you pass tests, providing you with the maths and abstractions for a ray tracer but absolutely none of the code. </p>
+
+<p>My colleague, an extremely bright and talented individual, had no interest in doing this, and that's fine. Not everyone has to want to do everything, not everyone is interested in ray tracers but that's not what I’m getting at, because far too often, in those who are curious enough about systems to learn the art of building them in the first place, it is not that they don’t want to, it is that they feel they can’t.</p>
+
+<p>They can.</p>
+
+<p>Every piece of software anyone has ever set out to build has been much simpler and far more complex than they imagined, and every time someone has built a piece of software, regardless of the level of abstraction, they have grappled with the simplicity and complexity inherent to building systems. I remember when I built my first program that ran off nothing but a bootloader and a qemu emulator, it was the teletext mode (int 0x80 into ah) and I got it to print “Hello World” quickly. I was surprised and maybe a little disappointed how easy it was to print to the screen by just calling the right interrupt and letting the BIOS do the heavy lifting. Then my head spun as I tried to generalise this to a function (this was also my first time really using assembly) that could take a string constant and print it. After a while of regretting ever learning what a computer was I managed to eke out something that worked but it was a mess and I barely understood it. I followed a pollock painterly approach to iterating, pouring sand over a house of cards. You’ve been there. And, after studying the code and wrestling with what I had wrought upon my text editor it hit me, a singular flash of inspiration following my brain unbeknownst to me marinating in the soup of the hours i had spent and as if by magic the hideous print function become a beautiful, velvety, sleek function, a rolls royce function, a simple function. </p>
+
+<p>In the 2024 Michael Mann feature Ferrari, Adam Driver playing the titular Enzo Ferrari remarks to his son that “When a thing works better, usually it is more beautiful to the eye”.</p>
+
+<p>I should say, at this point, if someone is paying me to develop software, especially to a deadline, especially with a team, there are times when using libraries is absolutely appropriate and even recommended. The issue is how it seems that we are always reaching for libraries, becoming glorified stewards of our favourite package manager, never fully understanding the why and how of things. Libraries bring with them their own complexity and learning curve, we are still expected to learn a domain model except the domain model is provided for us and may not be the most apt for our problem. Libraries may introduce a lot of code when you need only a limited subset of features it provides. If you were to build a HTTP server using only UNIX sockets you would learn so much about how the web works but it probably isn’t the right solution for an enterprise web application. </p>
+<p>
+Programming can potentially (I can’t prove this) be boiled down to two main components Maths and Abstractions. We define things mathematically and abstract those details away so we can focus on the bigger picture but, far too often I watch my colleagues and students focus on the big picture too early. I have found great success in focusing on what the first thing the software should be able to do, building that and then going from there. So if you’re trying to build your own spreadsheet, where do you want to start? Maybe you’d like to be able to place a number in a cell? If so you must first have a representation of a cell, usually some kind of data model which you may start by simply constructing from only the essential features (row, column, data maybe) and then rendering that data model, next you may give users the ability to select the cell and input data. Or you may start with rendering, then data input, then the model or you may decide the first place you start with a spreadsheet is reading and writing csvs, or any other way. In any case you will find that, once you’ve finished that first ‘story’ then you will have a foundation for much more of the system, and you will understand the problem domain much more than you did before. After you are able to place data in the cell then comes potentially editing a cell with data already inside it, removing data from a cell, formulas. All of these are now much more viable with the scaffolding you have in place, and you are able to deal with them in bitesize chunks, and you may even find yourself feeling like a programmer again. 
+</p>
+<p>
+If you find this whole piece intimidating then it may be the case that you’re not yet a programmer, maybe you know how to code and can speak about the differences between control structures, maybe you know what an array is or a linked list or a dictionary but you may not to know how to use them. It’s another surprising truth of software development that we have a very limited set of tools and the computer is only capable of doing a few different things. The art of software development is the art of knowing which pieces to use where. If we were electrical engineers we would have to take this quite seriously as our mistakes could lead to electric shocks, fires or hurting someone else. As programmers not currently working on critical systems we have the luxury of being able to make lots of mistakes in how we construct software without hurting anyone (so long as it remains undeployed). Yet the thing that I’ve seen most often in people learning to program is their fear, their fear of the compiler and the way it shouts errors at you, simple fear of getting things wrong, of being inadequate. When I first taught myself programming I would cry, out of frustration because my brain simply couldn’t deal with thinking in this precise, mathematical manner. So I would like to leave you with some advice on how to be a programmer.
+</p>
+<p>
+In my time as a tutor the most common question I’ve been asked by aspiring developers is ‘What should I make for my first project’ and, really, I recommend something tiny. Something so small you might laugh at the idea that it’s something you would take the time to make. The first piece of software I tried to make was a schengen calculator, a simple but also surprisingly complex piece of maths that I managed to eke out over the course of an evening. Feeling proud that I could correctly match whether someone had overstayed their welcome in the EU I sought to make it something with user interaction, the idea being that it would eventually become a website. I failed. The system became too complex for me to continue to expand it, I had the core logic (it was simple) but at that point expanding it to become an application stretched too many skills I just didn’t have (it was complex). 
+</p>
+<p>
+So, inevitably when you’ve failed to make your piece of software exactly what you imagined you will have started to build the neural pathways that allow you to achieve the parts you previously failed at. So bask in your failure, count your success and move on to the next teeny tiny project. How should you choose these teeny tiny projects? Pick something that interests you, a problem from your day to day life (a kettle timer?), a present for family, partners or friends, a hobby (collected stamps tracker?) , anything that will keep your interest enough to work on the project. If you don’t want to work on the project, you never will. Read books about programming, deepen your understanding of your favourite problem domain, listen to talks at conferences by programmers, read other peoples githubs, fork an open source repository and destroy it. Whatever it is you do, just make sure you enjoy it and, if you are going to continue becoming a developer make sure you enjoy programming. There are too many developers out there who simply don’t like programming. That's ok, maybe after reading this you will like programming again or, maybe, it’s not for you. Just have fun. 
+</p>
+
+<p>
+And hear this if nothing else. There are no moats, every piece of software started out life on a computer, written by a programmer, with all the same tools you have, it probably started simply, it probably became complex. There’s only one way to find out. Roll your own everything.
+</p>
+
+        </div>
+        
+        <div class="home-link">
+            <a href="index.html">return home</a>
+        </div>
+    </div>
+</body>
+</html>

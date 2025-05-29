@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>lo.iq</title>
     <style>
-        /* Reset and base styles */
+
         * {
             margin: 0;
             padding: 0;
@@ -112,7 +112,6 @@
     </div>
 
     <script>
-        // Optional: Add JavaScript for daily affirmation rotation
         const affirmations = [
             "I embody the rot in the world",
 		"I am hurtling towards total destruction",
@@ -126,11 +125,9 @@
 			    "God is not dead, God is vengeful"
         ];
 
-        // Function to update the daily affirmation
         function updateAffirmation() {
             const affirmationLink = document.querySelector('a[href="/daily-affirmation"]');
             
-            // For demonstration purposes - you might want a more permanent solution
             affirmationLink.addEventListener('click', function(e) {
                 e.preventDefault();
                 const randomIndex = Math.floor(Math.random() * affirmations.length);

@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>no humans - lo.iq</title>
+	<script src="https://cdn.jsdelivr.net/npm/p5@1.11.8/lib/p5.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f8f8;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 40px;
+            margin-top: 40px;
+        }
+
+        .stars {
+            margin-bottom: 10px;
+            letter-spacing: 8px;
+            text-align: center;
+        }
+
+        .title {
+            font-size: 2rem;
+            margin: 10px 0;
+            letter-spacing: 4px;
+            text-align: center;
+        }
+
+        .home-link {
+            text-align: center;
+            margin: 30px 0 60px;
+        }
+
+        .home-link a {
+            color: #333;
+            text-decoration: none;
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .home-link a:before {
+            content: '>';
+            position: absolute;
+            left: 0;
+        }
+
+        .home-link a:hover {
+            color: #777;
+        }
+
+        .essay-title {
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: normal;
+            text-transform: uppercase;
+        }
+
+        .essay p {
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .essay-title {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-JV3VZLKY0X"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-JV3VZLKY0X');
+</script>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="stars">* * * * * * * *</div>
+            <h1 class="title">lo.iq</h1>
+            <div class="stars">* * * * * * * *</div>
+        </div>
+	        <div id = "sketch-container" style="text-align:center;"></div>
+        <div class="home-link">
+            <a href="/">return home</a>
+        </div>
+    </div>
+    <script>
+const FREQUENCY = 0.1
+const AMP = 100
+const SPACING = 8
+let frames = 0
+let recording = false
+let freq = 0.1
+let phase = 0 
+let amp = 100
+let spacing = 8
+let xOffset = 0
+let colors = []
+let y = 0
+let distortion_timer = 0
+let spawn_timer = 0
+let DISTORT_TIME = 60
+let ys = [200, 300, 400]
+let spawnX = 0
+let spawnY = 0
+function reset_random() 
+{
+  freq = FREQUENCY
+  amp = AMP
+  spacing = SPACING
+}
+function setup() {
+  let canvas = createCanvas(400, 400);
+  canvas.parent("sketch-container")
+  let c1 = color(255, 208, 0) 
+  let c2 = color(208,0,255)
+  colors.push(c1)
+  colors.push(c2)
+}
+
+let txt = "There are no humans here There are no humans here There are no humans here There are no humans here There are no humans here There are no humans here"
+function draw() {
+  background(0);
+  stroke('white')
+  let lineX = getRandomArbitrary(0, 400)
+  line(lineX, 0, lineX, 400)
+  stroke(0, 0)
+  phase += 0.03
+  let should_distort = getRandomArbitrary(0, 100)
+  let should_spawn = getRandomArbitrary(0, 100)
+  if (should_spawn > 99) {
+    spawn_x = getRandomArbitrary(0, 400)
+    spawn_y = getRandomArbitrary(0, 400)
+    spawn_timer = getRandomArbitrary(1, 100)
+  }
+  if(should_distort > 99) {
+    distortion_timer = getRandomArbitrary(1, 100)
+  }
+  for(let i = 0; i < ys.length; i++) 
+  {
+      for(let j = 0; j < txt.length; j++) 
+      {
+        y = ys[i] + amp * sin((2 * PI) * freq * ((j / 10) + phase))
+        fill(random_item(colors))
+        text(txt[j], j  * spacing + xOffset, y)
+      }
+  }
+  if(spawn_timer > 0.1) 
+  {
+    spawn_timer--
+    text("are you complicit?", spawn_x, spawn_y)
+  }
+  if(distortion_timer > 0.1) 
+  {
+    distortion_timer--
+    freq = FREQUENCY + sin(phase * 0.6) * 0.2
+  }
+  if(distortion_timer <= 0.1) 
+  {
+    reset_random()
+  }
+}
+function random_item(items) {
+    return items[Math.floor(Math.random() * items.length)];
+}
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+    </script>
+
+</body>
+</html>
